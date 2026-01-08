@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced DOM Manipulation</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            width: 350px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #5a67d8;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            min-height: 25px;
+            transition: 0.4s;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>DOM Manipulation</h1>
+
+    <input type="text" id="userInput" placeholder="Enter your text">
+
+    <button onclick="updateText()">Submit</button>
+
+    <p id="displayText"></p>
+    <span id="errorMsg" class="error"></span>
+</div>
+
+<script>
+    function updateText() {
+        const input = document.getElementById("userInput").value;
+        const display = document.getElementById("displayText");
+        const error = document.getElementById("errorMsg");
+
+        if (input === "") {
+            error.innerText = "⚠ Please enter some text!";
+            display.innerText = "";
+        } else {
+            error.innerText = "";
+            display.innerText = input;
+            display.style.transform = "scale(1.1)";
+            setTimeout(() => {
+                display.style.transform = "scale(1)";
+            }, 300);
+        }
+    }
+</script>
+
+</body>
+</html>
